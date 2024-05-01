@@ -1,0 +1,17 @@
+﻿@model UserEditViewModel
+
+
+<form asp-action="Edit">
+	<input asp-for="UserName" class="form-control" value="@Model.UserName" />
+	<label asp-for="PaidMoney">@Html.DisplayNameFor(m => m.PaidMoney) $</label>
+	<input asp-for="PaidMoney"></input>
+	<input asp-for="IsActive" class="form-check">@Html.DisplayNameFor(m => m.IsActive)</input>
+
+	<a onclick="SaveUser()" class="btn btn-primary">OK</a>
+
+	<a class="btn btn-danger" asp-controller="User" asp-action="Index"> BACK </a>
+</form>
+
+@section Scripts {
+	<script type="text/javascript" src="~/user/index.js"></script>
+}

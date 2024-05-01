@@ -1,0 +1,27 @@
+﻿@model UserAddViewModel
+@{
+	Layout = "_Layout";
+}
+
+
+<h1>Kullanıcı Oluşturma Formu</h1>
+
+<form >
+	<input asp-for="UserName" class="form-control" placeholder="@Html.DisplayNameFor(m=> m.UserName)"/>
+	<label asp-for="PaidMoney">@Html.DisplayNameFor(m => m.PaidMoney) $</label>
+	<input asp-for="PaidMoney"></input>
+	<input asp-for="IsActive" class="form-check">@Html.DisplayNameFor(m => m.IsActive)</input>
+
+	<a onclick="SaveUser()"  class="btn btn-primary">OK</a>
+
+	<a class="btn btn-danger"  asp-controller="User" asp-action="Index"> BACK </a>
+</form>
+
+@section Scripts{
+	<script type="text/javascript" src="~/user/index.js"></script>
+}
+
+@* 1- Form tagı asp controller ve asp act olarak belirtilmediği durumda varsayılan olarak form metod get , form action ise ilgili controllerın kendisine gider
+2- a tagına asp action verilirse bu html olarak a tagına href attribute ekler dolayısıyla bu bir link isteği yapar
+3- bir a tagının onclick metodu eklendiğinde link olmaktan çıkartırız.
+*@

@@ -1,0 +1,52 @@
+﻿@model List<UserEditViewModel>
+
+
+<div class="row">
+    <div class="alert alert-success alert-dismissible " role="alert" id="success-message">
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="col-3 px-2 py-2" id="add-user"> </div>
+    <div class="col-9">
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-warning" onclick="AddUser()">Create New </a>
+                <a class="btn btn-primary" onclick="GetUsers()">Refresh</a>
+                <hr />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>UserName</th>
+                            <th>PaidMoney</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-list">
+                        @foreach (UserEditViewModel item in Model)
+                        {
+                            <tr>
+                                <td>@item.RowId</td>
+                                <td>@item.UserName</td>
+                                <td>@item.PaidMoney</td>
+                                <td>@item.IsActive</td>
+                                <td>
+                                    <a class="btn btn-info" asp-controller="User" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    <a class="btn btn-secondary" asp-controller="User" asp-action="Details" asp-route-id="@item.Id">Detail</a>
+                                    <a class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/User/index.js"></script>
+}
