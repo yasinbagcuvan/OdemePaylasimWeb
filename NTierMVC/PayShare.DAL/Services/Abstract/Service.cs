@@ -16,14 +16,14 @@ namespace PayShare.DAL.Services.Abstract
 		private readonly IMapper _mapper;
 		public Repo<TEntity> _repo;
 
-		public Service(IMapper mapper)
+		public Service(Repo<TEntity> repo)
 		{
 			MapperConfiguration configuration = new MapperConfiguration(configuration =>
 			{
 				configuration.CreateMap<TDto,TEntity>().ReverseMap();
 			});
 			
-			_mapper = mapper;
+			_mapper = configuration.CreateMapper();
 		}
 
 		public int Add(TDto dto)

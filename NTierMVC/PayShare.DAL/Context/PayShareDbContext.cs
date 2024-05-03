@@ -10,7 +10,8 @@ namespace PayShare.DAL.Context
 {
 	public class PayShareDbContext : DbContext
 	{
-		public PayShareDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+
+        public PayShareDbContext(DbContextOptions<PayShareDbContext> dbContextOptions) : base(dbContextOptions)
 		{ }
 		public DbSet<Event> Events { get; set; }
 		public DbSet<GeneralLedger> GeneralLedgers { get; set; }

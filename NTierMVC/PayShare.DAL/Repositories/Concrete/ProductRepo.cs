@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PayShare.DAL.Repositories.Concrete
 {
-	internal class ProductRepo : Repo<Product>
+	public class ProductRepo : Repo<Product>
 	{
         public ProductRepo(PayShareDbContext dbContext) : base(dbContext) 
         {

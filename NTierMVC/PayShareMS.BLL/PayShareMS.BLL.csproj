@@ -11,8 +11,4 @@
     <ProjectReference Include="..\PayShareMS.DTO\PayShareMS.DTO.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Managers\Concrete\" />
-  </ItemGroup>
-
 </Project>

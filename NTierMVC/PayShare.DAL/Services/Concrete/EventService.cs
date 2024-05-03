@@ -1,5 +1,4 @@
-﻿using PayShare.DAL.Context;
-using PayShare.DAL.Repositories.Concrete;
+﻿using PayShare.DAL.Repositories.Concrete;
 using PayShare.DAL.Services.Abstract;
 using PayShareMS.DTO;
 using PayShareMS.Entities;
@@ -11,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace PayShare.DAL.Services.Concrete
 {
-	public class PersonService : Service<Person, PersonDto>
+	public class EventService : Service<Event, EventDto>
 	{
-        public PersonService(PersonRepo repo) : base(repo)
-        {
-                
-        }
-    }
+		public EventService(EventRepo repo) : base(repo)
+		{
+
+		}
+	}
 }

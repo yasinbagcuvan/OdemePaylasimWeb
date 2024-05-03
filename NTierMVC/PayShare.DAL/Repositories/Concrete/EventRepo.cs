@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PayShare.DAL.Repositories.Concrete
 {
-	internal class EventRepo : Repo<Event>
+	public class EventRepo : Repo<Event>
 	{
         public EventRepo(PayShareDbContext dbContext) : base(dbContext)
         {

@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace PayShareMS.BLL.Managers.Abstract
 {
-	public abstract class Manager<TDto> where TDto : BaseDto
+	public abstract class Manager<TDto, TEntity> where TDto : BaseDto where TEntity : BaseEntity
 		
 	{
-		protected readonly IService<TDto> _service;
+		protected  Service<TEntity, TDto> _service;
 
 		public int Add(TDto dto)	{ return _service.Add(dto);}
 		public int Update(TDto dto) { return _service.Update(dto); }

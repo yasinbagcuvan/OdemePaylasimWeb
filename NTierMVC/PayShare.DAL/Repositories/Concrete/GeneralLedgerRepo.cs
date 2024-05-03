@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PayShare.DAL.Repositories.Concrete
 {
-	internal class GeneralLedgerRepo : Repo<GeneralLedger>
+	public class GeneralLedgerRepo : Repo<GeneralLedger>
 	{
         public GeneralLedgerRepo(PayShareDbContext dbContext):base(dbContext) { }
       
