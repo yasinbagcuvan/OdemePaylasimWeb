@@ -11,14 +11,14 @@ namespace PayShareMS.Entities
 	{
 		public int PayeePersonId { get; set; }
 		[ForeignKey("PayeePersonId")]
-		public  Person PayeePerson { get; set; }
+		public virtual Person? PayeePerson { get; set; }
 		public int DebtorPersonId { get; set; }
 		[ForeignKey("DebtorPersonId")]
-		public  Person DebtorPerson { get; set; }
+		public virtual Person? DebtorPerson { get; set; }
 		public int EventId { get; set; }
-		public Event Event { get; set; }
+		public virtual Event? Event { get; set; }
 		public int ProductId { get; set; }
-		public Product Product { get; set; }
+		public virtual Product? Product { get; set; }
 		public decimal Amount { get; set; }
 		public bool IsPaid { get; set; }
 	}

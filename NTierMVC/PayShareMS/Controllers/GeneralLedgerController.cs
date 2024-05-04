@@ -91,6 +91,10 @@ namespace PayShareMS.Controllers
                 GeneralLedgerDto dto = new GeneralLedgerDto();
                 dto.Amount = generalLedger.Amount;
                 dto.IsPaid = generalLedger.IsPaid;
+                dto.DebtorPersonId = generalLedger.DebtorPersonId;
+                dto.PayeePersonId = generalLedger.PayeePersonId;
+                dto.EventId = generalLedger.EventId;
+                dto.ProductId = generalLedger.ProductId;
                 
                 _GeneralLedgerManager.Add(dto);
 
