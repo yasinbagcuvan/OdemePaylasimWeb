@@ -2,7 +2,7 @@
 
 namespace PayShareMS.Models
 {
-	public class EventAddViewModel : EventEditListViewModel
+	public class EventAddViewModel 
 	{
 		public string Name { get; set; }
 		public DateTime EventDate { get; set; }

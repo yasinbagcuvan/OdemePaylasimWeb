@@ -13,8 +13,20 @@ namespace PayShareMS.BLL.Profiles
 	{
         public GeneralLedgerProfile()
         {
+			CreateMap<PersonDto, Person>().ReverseMap();
+			CreateMap<EventDto, Event>().ReverseMap();
+			CreateMap<ProductDto, Product>().ReverseMap();
+			CreateMap<GeneralLedgerDto, GeneralLedger>().ReverseMap();
+
+
 			//CreateMap<GeneralLedgerDto, GeneralLedger>()
 			//	.ForMember(dest => dest.DebtorPerson, opt => opt.MapFrom(src => src.DebtorPerson))
+			//	.ReverseMap();
+			//	CreateMap<GeneralLedgerDto, GeneralLedger>()
+			//	.ForMember(dest => dest.DebtorPersonId, opt => opt.MapFrom(src => src.DebtorPersonId))
+			//	.ReverseMap();
+			//CreateMap<GeneralLedgerDto, GeneralLedger>()
+			//	.ForMember(dest => dest.PayeePersonId, opt => opt.MapFrom(src => src.PayeePersonId))
 			//	.ReverseMap();
 			//CreateMap<GeneralLedgerDto, GeneralLedger>()
 			//		.ForMember(dest => dest.PayeePerson, opt => opt.MapFrom(src => src.PayeePerson))
@@ -25,7 +37,6 @@ namespace PayShareMS.BLL.Profiles
 			//CreateMap<GeneralLedgerDto, GeneralLedger>()
 			//		.ForMember(dest => dest.Product, opt => opt.MapFrom(src => src.Product))
 			//		.ReverseMap();
-			CreateMap<GeneralLedgerDto, GeneralLedger>().ReverseMap();
 		}
     }
 }

@@ -10,12 +10,11 @@ namespace PayShareMS.Entities
 	public class GeneralLedger : BaseEntity
 	{
 		public int PayeePersonId { get; set; }
-
 		[ForeignKey("PayeePersonId")]
-		public Person PayeePerson { get; set; }
+		public  Person PayeePerson { get; set; }
 		public int DebtorPersonId { get; set; }
 		[ForeignKey("DebtorPersonId")]
-		public Person DebtorPerson { get; set; }
+		public  Person DebtorPerson { get; set; }
 		public int EventId { get; set; }
 		public Event Event { get; set; }
 		public int ProductId { get; set; }

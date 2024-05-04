@@ -14,7 +14,7 @@ namespace PayShareMS.BLL.Profiles
         public PersonProfile()
         {
 			CreateMap<PersonDto, Person>().ReverseMap();
-
+			CreateMap<GeneralLedgerDto, GeneralLedger>().ReverseMap();
 
 			//CreateMap<PersonDto, Person>()
 			//		.ForMember(dest => dest.GeneralLedgers, opt => opt.MapFrom(src => src.GeneralLedgers))

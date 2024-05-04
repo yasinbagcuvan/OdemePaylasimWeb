@@ -21,4 +21,8 @@
     <ProjectReference Include="..\PayShareMS.Entities\PayShareMS.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Context\NewFolder\" />
+  </ItemGroup>
+
 </Project>

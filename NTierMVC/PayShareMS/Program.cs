@@ -4,6 +4,7 @@ using PayShare.DAL.Repositories.Concrete;
 using PayShare.DAL.Services.Concrete;
 using PayShareMS.BLL.Managers.Abstract;
 using PayShareMS.BLL.Managers.Concrete;
+using System.Configuration;
 
 
 
@@ -17,10 +18,11 @@ namespace PayShareMS
 			var builder = WebApplication.CreateBuilder(args);
 
 			// Add services to the container.
-			builder.Services.AddDbContext<PayShareDbContext>(opts =>
-			{
-				opts.UseSqlServer("Data Source=DESKTOP-SNI2HD0\\MSSQLSERVERYASN;Initial Catalog=PayShareDB;Integrated Security=True;Encrypt=False;");
-			});
+			builder.Services.AddDbContext<PayShareDbContext>(options => {
+				options.UseSqlServer(
+					builder.Configuration.GetConnectionString("PayShareMSConStr"));
+			}, ServiceLifetime.Singleton);
+			
 
 			builder.Services.AddControllersWithViews();
 

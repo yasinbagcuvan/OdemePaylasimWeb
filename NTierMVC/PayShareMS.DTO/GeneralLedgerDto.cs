@@ -9,9 +9,11 @@ namespace PayShareMS.DTO
 {
 	public class GeneralLedgerDto : BaseDto
 	{
-		public PersonDto PayeePerson { get; set; }
+		[ForeignKey("PayeePersonId")]
+		public  PersonDto PayeePerson { get; set; }
 		public int PayeePersonId { get; set; }
-		public PersonDto DebtorPerson { get; set; }
+		[ForeignKey("DebtorPersonId")]
+		public  PersonDto DebtorPerson { get; set; }
 		public int DebtorPersonId { get; set; }
 		public EventDto Event { get; set; }
 		public int EventId { get; set; }
