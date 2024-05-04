@@ -3,9 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PayShareMS.Models
 {
-	public class GeneralLedgerAddViewModel : GeneralLedgerEditListViewModel
+	public class GeneralLedgerAddViewModel 
 	{
-
+		public int PayeePersonId { get; set; }
+		public int DebtorPersonId { get; set; }
+		public int EventId { get; set; }
+		public int ProductId { get; set; }
 		public PersonEditListViewModel PayeePerson { get; set; }
 
 		public PersonEditListViewModel DebtorPerson { get; set; }

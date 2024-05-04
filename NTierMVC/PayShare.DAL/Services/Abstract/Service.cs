@@ -29,11 +29,12 @@ namespace PayShare.DAL.Services.Abstract
 			});
 			
 			_mapper = configuration.CreateMapper();
+			_repo = repo;
 		}
 
 		public int Add(TDto dto)
 		{
-			TEntity entity = _mapper.Map<TEntity>(dto);
+			TEntity entity = _mapper.Map<TEntity>(dto) ;
 			return _repo.Add(entity);
 		}
 
@@ -64,6 +65,7 @@ namespace PayShare.DAL.Services.Abstract
 		public int Update(TDto dto)
 		{
 			TEntity entity = _mapper.Map<TEntity>(dto);
+			
 			return _repo.Update(entity);
 		}
 	}

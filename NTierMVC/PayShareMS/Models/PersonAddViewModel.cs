@@ -2,7 +2,7 @@
 
 namespace PayShareMS.Models
 {
-	public class PersonAddViewModel : PersonEditListViewModel
+	public class PersonAddViewModel
 	{
 		public string Name { get; set; }
 		public string Surname { get; set; }

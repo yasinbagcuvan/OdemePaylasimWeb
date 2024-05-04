@@ -10,12 +10,12 @@ namespace PayShare.DAL.Context
 {
 	public class PayShareDbContext : DbContext
 	{
-		private bool _WithoutOptions=false;
-        public PayShareDbContext()
-        {
-			_WithoutOptions = true;
+		//private bool _WithoutOptions=false;
+  //      public PayShareDbContext()
+  //      {
+		//	_WithoutOptions = true;
 
-		}
+		//}
         public PayShareDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
 		{ }
 		public DbSet<Event> Events { get; set; }
@@ -30,15 +30,15 @@ namespace PayShare.DAL.Context
 			modelBuilder.Entity<Person>().HasMany(p => p.PayeeGeneralLedgers).WithOne(gl => gl.PayeePerson).HasForeignKey(g => g.PayeePersonId);
 		}
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			if (_WithoutOptions)
-			{
-				base.OnConfiguring(optionsBuilder);
-				optionsBuilder.UseSqlServer("Data Source=DESKTOP-SNI2HD0\\MSSQLSERVERYASN;Initial Catalog=PayShareDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True;");
-			}
+		//protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		//{
+		//	if (_WithoutOptions)
+		//	{
+		//		base.OnConfiguring(optionsBuilder);
+		//		optionsBuilder.UseSqlServer("Data Source=DESKTOP-SNI2HD0\\MSSQLSERVERYASN;Initial Catalog=PayShareDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True;");
+		//	}
 
-		}
+		//}
 	}
 	
 }

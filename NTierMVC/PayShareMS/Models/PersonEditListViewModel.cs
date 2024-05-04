@@ -2,7 +2,7 @@
 
 namespace PayShareMS.Models
 {
-	public class PersonEditListViewModel
+	public class PersonEditListViewModel : PersonAddViewModel
 	{
 		public int Id { get; set; }
 		public int RowNum { get; set; }
