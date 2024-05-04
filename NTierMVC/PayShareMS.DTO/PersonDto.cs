@@ -10,5 +10,6 @@ namespace PayShareMS.DTO
 	{
 		public string Name { get; set; }
 		public string Surname { get; set; }
+		public ICollection<GeneralLedgerDto> GeneralLedgers { get; set; }
 	}
 }

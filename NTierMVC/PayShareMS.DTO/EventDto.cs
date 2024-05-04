@@ -10,5 +10,6 @@ namespace PayShareMS.DTO
 	{
 		public string Name { get; set; }
 		public DateTime EventDate { get; set; }
+		public ICollection<GeneralLedgerDto> GeneralLedgers { get; set; }
 	}
 }

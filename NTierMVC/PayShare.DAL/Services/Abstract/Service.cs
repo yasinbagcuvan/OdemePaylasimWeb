@@ -15,12 +15,17 @@ namespace PayShare.DAL.Services.Abstract
 	{
 		private readonly IMapper _mapper;
 		public Repo<TEntity> _repo;
+		protected Profile _profile = null;
 
 		public Service(Repo<TEntity> repo)
 		{
 			MapperConfiguration configuration = new MapperConfiguration(configuration =>
 			{
 				configuration.CreateMap<TDto,TEntity>().ReverseMap();
+
+				if (_profile != null)
+					configuration.AddProfile(_profile);
+
 			});
 			
 			_mapper = configuration.CreateMapper();

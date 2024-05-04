@@ -19,7 +19,7 @@ namespace PayShareMS
 			// Add services to the container.
 			builder.Services.AddDbContext<PayShareDbContext>(opts =>
 			{
-				opts.UseSqlServer(builder.Configuration.GetConnectionString("PayShareMSConStr"));
+				opts.UseSqlServer("Data Source=DESKTOP-SNI2HD0\\MSSQLSERVERYASN;Initial Catalog=PayShareDB;Integrated Security=True;Encrypt=False;");
 			});
 
 			builder.Services.AddControllersWithViews();

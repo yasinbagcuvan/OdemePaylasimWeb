@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Profiles\**" />
+    <EmbeddedResource Remove="Profiles\**" />
+    <None Remove="Profiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PayShare.DAL\PayShare.DAL.csproj" />
     <ProjectReference Include="..\PayShareMS.DTO\PayShareMS.DTO.csproj" />
   </ItemGroup>
