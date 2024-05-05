@@ -15,7 +15,7 @@ namespace PayShare.DAL.Services.Concrete
 	{
 		public ProductService(ProductRepo repo) : base(repo)
 		{
-			base._profile = new ProductProfile();
+			//base._profile = new ProductProfile();
 		}
 	}
 	

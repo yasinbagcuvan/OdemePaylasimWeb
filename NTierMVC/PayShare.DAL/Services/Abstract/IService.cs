@@ -1,4 +1,5 @@
-﻿using PayShareMS.DTO;
+﻿using AutoMapper;
+using PayShareMS.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace PayShare.DAL.Services.Abstract
 {
 	public interface IService<TDto> where TDto : BaseDto
 	{
-		int Add(TDto dto);
+        IMapper Mapper { set; }
+        int Add(TDto dto);
 		int Update(TDto dto);
 		int Delete(TDto dto);
 		IEnumerable<TDto> GetAll();

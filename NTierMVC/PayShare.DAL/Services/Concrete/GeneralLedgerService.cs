@@ -1,4 +1,5 @@
-﻿using PayShare.DAL.Repositories.Concrete;
+﻿using AutoMapper;
+using PayShare.DAL.Repositories.Concrete;
 using PayShare.DAL.Services.Abstract;
 using PayShareMS.BLL.Profiles;
 using PayShareMS.DTO;
@@ -15,7 +16,13 @@ namespace PayShare.DAL.Services.Concrete
 	{
 		public GeneralLedgerService(GeneralLedgerRepo repo) : base(repo)
 		{
-			base._profile = new GeneralLedgerProfile();
+			//base._profile = new GeneralLedgerProfile();
+			MapperConfiguration config = new MapperConfiguration(config =>
+			{
+				Profile profile = new GeneralLedgerProfile();
+				config.AddProfile(profile);
+			});
+			base.Mapper=config.CreateMapper();
 		}
 	}
 }

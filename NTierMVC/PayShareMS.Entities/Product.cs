@@ -10,6 +10,6 @@ namespace PayShareMS.Entities
 	{
 		public string Name { get; set; }
 		public decimal Price { get; set; }
-		public ICollection<GeneralLedger>? GeneralLedgers { get; set; }
+		public virtual ICollection<GeneralLedger>? GeneralLedgers { get; set; }
 	}
 }

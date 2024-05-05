@@ -1,20 +1,20 @@
 ﻿using PayShareMS.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PayShareMS.Models
 {
 	public class GeneralLedgerAddViewModel 
 	{
+		[Display(Name ="PayeeName")]
 		public int PayeePersonId { get; set; }
-		public int DebtorPersonId { get; set; }
-		public int EventId { get; set; }
-		public int ProductId { get; set; }
-		public PersonEditListViewModel? PayeePerson { get; set; }
+        [Display(Name = "DebtorName")]
+        public int DebtorPersonId { get; set; }
+        [Display(Name = "EventName")]
+        public int EventId { get; set; }
+        [Display(Name = "ProductName")]
+        public int ProductId { get; set; }
 
-		public PersonEditListViewModel? DebtorPerson { get; set; }
-
-		public EventEditListViewModel? Event { get; set; }
-		public ProductEditListViewModel? Product { get; set; }
 		public decimal Amount { get; set; }
 		public bool IsPaid { get; set; }
 	}

@@ -13,9 +13,9 @@ namespace PayShare.DAL.Services.Abstract
 {
 	public abstract class Service<TEntity, TDto> : IService<TDto> where TEntity : BaseEntity where TDto : BaseDto
 	{
-		private readonly IMapper _mapper;
+		protected  IMapper _mapper;
 		public Repo<TEntity> _repo;
-		protected Profile _profile = null;
+
 
 		public Service(Repo<TEntity> repo)
 		{
@@ -23,8 +23,6 @@ namespace PayShare.DAL.Services.Abstract
 			{
 				configuration.CreateMap<TDto,TEntity>().ReverseMap();
 
-				if (_profile != null)
-					configuration.AddProfile(_profile);
 
 			});
 			
@@ -32,7 +30,12 @@ namespace PayShare.DAL.Services.Abstract
 			_repo = repo;
 		}
 
-		public int Add(TDto dto)
+        public IMapper Mapper
+        {
+            set { _mapper = value; }
+        }
+
+        public int Add(TDto dto)
 		{
 			TEntity entity = _mapper.Map<TEntity>(dto) ;
 			return _repo.Add(entity);

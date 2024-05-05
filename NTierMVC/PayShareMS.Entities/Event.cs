@@ -9,8 +9,8 @@ namespace PayShareMS.Entities
 	public class Event : BaseEntity
 	{
 		public string Name { get; set; }
-		public DateTime EventDate { get; set; }
-		public ICollection<GeneralLedger>? GeneralLedgers { get; set; }
+		public  DateTime EventDate { get; set; }
+		public virtual ICollection<GeneralLedger>? GeneralLedgers { get; set; }
 
 	}
 }

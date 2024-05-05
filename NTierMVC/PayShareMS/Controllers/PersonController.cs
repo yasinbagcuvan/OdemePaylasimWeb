@@ -124,6 +124,7 @@ namespace PayShareMS.Controllers
 					peDto.Id = person.Id;
 					peDto.Name = person.Name;
 					peDto.Surname = person.Surname;
+                    
 					_personManager.Update(peDto);
 				}
                 catch (DbUpdateConcurrencyException)

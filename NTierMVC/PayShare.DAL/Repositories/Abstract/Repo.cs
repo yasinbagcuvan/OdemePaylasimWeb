@@ -47,7 +47,8 @@ namespace PayShare.DAL.Repositories.Abstract
 
 		public int Update(TEntity entity)
 		{
-
+			TEntity orjinal =this.GetById(entity.Id);
+			entity.Created = orjinal.Created;
 			entity.Updated = DateTime.Now;
             _dbContext.Entry(entity).State = EntityState.Modified;
 

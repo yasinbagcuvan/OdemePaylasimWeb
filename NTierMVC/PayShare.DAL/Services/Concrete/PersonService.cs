@@ -16,7 +16,7 @@ namespace PayShare.DAL.Services.Concrete
 	{
         public PersonService(PersonRepo repo) : base(repo)
         {
-            base._profile = new PersonProfile();
+            //base._profile = new PersonProfile();
         }
     }
 }

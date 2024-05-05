@@ -10,7 +10,7 @@ namespace PayShareMS.Entities
 	{
 		public string Name {  get; set; }
 		public string Surname { get; set; }
-		public ICollection<GeneralLedger>? DebtorGeneralLedgers { get; set; }
-		public ICollection<GeneralLedger>? PayeeGeneralLedgers { get; set; }
+		public virtual ICollection<GeneralLedger>? DebtorGeneralLedgers { get; set; }
+		public virtual ICollection<GeneralLedger>? PayeeGeneralLedgers { get; set; }
 	}
 }

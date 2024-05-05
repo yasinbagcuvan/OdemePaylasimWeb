@@ -15,7 +15,7 @@ namespace PayShare.DAL.Services.Concrete
 	{
 		public EventService(EventRepo repo) : base(repo)
 		{
-			base._profile = new EventProfile();
+			//base._profile = new EventProfile();
 		}
 	}
 }

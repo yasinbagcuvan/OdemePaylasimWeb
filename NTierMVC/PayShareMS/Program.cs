@@ -5,6 +5,7 @@ using PayShare.DAL.Services.Concrete;
 using PayShareMS.BLL.Managers.Abstract;
 using PayShareMS.BLL.Managers.Concrete;
 using System.Configuration;
+using System.Reflection;
 
 
 
@@ -19,12 +20,14 @@ namespace PayShareMS
 
 			// Add services to the container.
 			builder.Services.AddDbContext<PayShareDbContext>(options => {
-				options.UseSqlServer(
+				options.UseLazyLoadingProxies(false).UseSqlServer(
 					builder.Configuration.GetConnectionString("PayShareMSConStr"));
 			}, ServiceLifetime.Singleton);
 			
 
 			builder.Services.AddControllersWithViews();
+
+			builder.Services.AddAutoMapper(typeof(Assembly));
 
 			builder.Services.AddSingleton<PersonManager>();
 			builder.Services.AddSingleton<PersonRepo>();

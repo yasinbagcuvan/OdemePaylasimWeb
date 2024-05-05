@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ namespace PayShareMS.Controllers
 		private readonly PersonManager _personManager;
 		private readonly EventManager _eventManager;
 		private readonly ProductManager _productManager;
+        private IMapper _mapper;
         private int _rowNum = 1;
 		public GeneralLedgerController(GeneralLedgerManager GeneralLedgerManager, PersonManager personManager, EventManager eventManager, ProductManager productManager)
 		{
@@ -28,6 +30,14 @@ namespace PayShareMS.Controllers
 			_personManager = personManager;
 			_eventManager = eventManager;
 			_productManager = productManager;
+
+            MapperConfiguration config = new MapperConfiguration(config =>
+            {
+                config.CreateMap<PersonDto, PersonEditListViewModel>();
+                config.CreateMap<ProductDto, ProductEditListViewModel>();
+                config.CreateMap<EventDto, EventEditListViewModel>();
+            });
+            _mapper = config.CreateMapper();
 		}
 
 		// GET: GeneralLedger
@@ -37,11 +47,21 @@ namespace PayShareMS.Controllers
 			List<GeneralLedgerEditListViewModel> vm = new List<GeneralLedgerEditListViewModel>();
 			foreach (GeneralLedgerDto Dto in GeneralLedgerDtos)
 			{
+                PersonDto payeePerson = _personManager.GetById(Dto.PayeePersonId);
+                PersonDto debtorPerson = _personManager.GetById(Dto.DebtorPersonId);
+                EventDto eventDto = _eventManager.GetById(Dto.EventId);
+                ProductDto productDto = _productManager.GetById(Dto.ProductId);
+
 				GeneralLedgerEditListViewModel vmModel = new GeneralLedgerEditListViewModel();
 				vmModel.Id = Dto.Id;
 				vmModel.IsPaid = Dto.IsPaid;
 				vmModel.Amount = Dto.Amount;
                 vmModel.RowNum = _rowNum;
+                vmModel.PayeePerson = _mapper.Map<PersonEditListViewModel>(payeePerson);
+                vmModel.DebtorPerson = _mapper.Map<PersonEditListViewModel>(debtorPerson);
+                vmModel.Event = _mapper.Map<EventEditListViewModel>(eventDto);
+                vmModel.Product = _mapper.Map<ProductEditListViewModel>(productDto);
+
 				vm.Add(vmModel);
 			}
 			return View(vm);
@@ -120,10 +140,10 @@ namespace PayShareMS.Controllers
             {
                 return NotFound();
             }
-			ViewData["DebtorPersonId"] = new SelectList(_personManager.GetAll(), "Id", "Name", generalLedger.DebtorPersonId);
-			ViewData["EventId"] = new SelectList(_eventManager.GetAll(), "Id", "Name", generalLedger.EventId);
-			ViewData["PayeePersonId"] = new SelectList(_personManager.GetAll(), "Id", "Name", generalLedger.PayeePersonId);
-			ViewData["ProductId"] = new SelectList(_productManager.GetAll(), "Id", "Name", generalLedger.ProductId);
+			ViewBag.DebtorPersonId = new SelectList(_personManager.GetAll(), "Id", "Name", generalLedger.DebtorPersonId);
+            ViewBag.EventId = new SelectList(_eventManager.GetAll(), "Id", "Name", generalLedger.EventId);
+            ViewBag.PayeePersonId = new SelectList(_personManager.GetAll(), "Id", "Name", generalLedger.PayeePersonId);
+            ViewBag.ProductId = new SelectList(_productManager.GetAll(), "Id", "Name", generalLedger.ProductId);
 			return View(generalLedger);
         }
 
@@ -138,6 +158,7 @@ namespace PayShareMS.Controllers
             {
                 return NotFound();
             }
+            //generalLedger.PayeePerson = ViewData["PayeePersonId"].
 
             if (ModelState.IsValid)
             {
@@ -146,6 +167,9 @@ namespace PayShareMS.Controllers
 					GeneralLedgerDto dto = new GeneralLedgerDto();
 					dto.Amount = generalLedger.Amount;
 					dto.IsPaid = generalLedger.IsPaid;
+                    //dto.DebtorPerson = _personManager.GetById(generalLedger.DebtorPersonId);
+                    //dto.PayeePerson = _personManager.GetById(generalLedger.PayeePersonId);
+
 					_GeneralLedgerManager.Update(dto);
                 }
                 catch (DbUpdateConcurrencyException)
@@ -161,11 +185,11 @@ namespace PayShareMS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-			ViewData["DebtorPersonId"] = new SelectList(_personManager.GetAll(), "Id", "Name", generalLedger.DebtorPersonId);
-			ViewData["EventId"] = new SelectList(_eventManager.GetAll(), "Id", "Name", generalLedger.EventId);
-			ViewData["PayeePersonId"] = new SelectList(_personManager.GetAll(), "Id", "Name", generalLedger.PayeePersonId);
-			ViewData["ProductId"] = new SelectList(_productManager.GetAll(), "Id", "Name", generalLedger.ProductId);
-			return View(generalLedger);
+            ViewBag.DebtorPersonId = new SelectList(_personManager.GetAll(), "Id", "Name", generalLedger.DebtorPersonId);
+            ViewBag.EventId = new SelectList(_eventManager.GetAll(), "Id", "Name", generalLedger.EventId);
+            ViewBag.PayeePersonId = new SelectList(_personManager.GetAll(), "Id", "Name", generalLedger.PayeePersonId);
+            ViewBag.ProductId = new SelectList(_productManager.GetAll(), "Id", "Name", generalLedger.ProductId);
+            return View(generalLedger);
         }
 
         // GET: GeneralLedger/Delete/5
